@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Handling</title>
+</head>
+<body>
+<script>
+/*  
+    =====Error Handling=====
+    - Ketika terjadi error di kode JavaScript, kadang kita tidak ingin program langsung berhenti.
+    - Di JavaScript, kita bisa menangkap error yang muncul.
+    - Caranya adalah dengan menggunakan try-catch statement.
+    - Pada blok try, kita menuliskan kode yang berpotensi menimbulkan error. Jika error terjadi, eksekusi di blok try akan berhenti dan otomatis masuk ke blok catch.
+    - Jika tidak ada error, maka blok catch tidak akan dijalankan.
+
+
+*/
+    class MathUtil {
+
+        static sum(...numbers){
+            if(numbers.length === 0){
+                throw new Error("Parameter harus lebih dari 0");
+            }
+            let total = 0;
+            for(const number of numbers){
+                total += number;
+
+            }
+            return total;
+        }
+    }
+
+
+    try {
+        console.info(MathUtil.sum()); // Jika terdapat error ini tidak akan di esksekusi // Jika tidak terdapat error maka ini tidak akan di esekusi
+        console.info("ANANO"); // Jika terdapat error ini tidak akan di esksekusi // Jika tidak terdapat error maka ini tidak akan di esekusi
+    } catch(error) {
+        console.info(`Terjadi Error : ${error.message}`); // Jika terdapat Error maka ini akan di esekusi // Tapi jika tidak ada error ini tidak akan di esekusi
+    } finally {
+        console.log("Program Selesai")
+    }
+    /* Kata Kunci finally
+    - Kadang kita ingin menjalankan sesuatu, baik terjadi error maupun tidak.
+    - Dalam struktur try-catch, kita bisa menambahkan blok finally.
+    - Blok finally akan selalu dieksekusi setelah try-catch selesai, entah ada error atau tidak, blok ini tetap dijalankan.
+    */
+
+    console.info("KOCAK") // walaupun diatas tadi terdapat error atau tidak terdapat error ini juga akan tetap diesekusi karena try catch.
+
+    // Try Finally
+    class Counter {
+        #counter = 0
+
+        next(){
+            try {
+                return this.#counter;  // return mengunci nilai sebelum finally mengubahnya.
+            } finally {
+                this.#counter++;       // alasan kenapa output pertamanya bukan 1 adalah karena return di dalam
+            }                          // try berhasil "menangkap" angka 0 sebelum blok finally sempat menaikkan nilainya.
+        }
+    }
+
+    const counter = new Counter();
+    console.info(counter.next());
+    console.info(counter.next());
+    console.info(counter.next());
+    console.info(counter.next());
+    console.info(counter.next());
+    console.info(counter.next());
+
+</script>
+</script>
+</body>
+</html>

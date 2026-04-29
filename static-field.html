@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Field</title>
+</head>
+<body>
+<script>
+    /* =========== Kata Kunci static =============
+    - static adalah kata kunci yang bisa ditambahkan sebelum field atau method. Biasanya, ketika kita membuat field atau method, maka secara otomatis:
+    1)field akan menjadi property di instance object
+    2)method akan menjadi function di prototype
+    - Jika kita menambahkan static, maka hal tersebut tidak terjadi. 
+    
+    ============== Static Class Field ============
+    - Jika kita menambahkan static pada field di dalam class, maka field tersebut bukan lagi milik instance object, melainkan milik class itu sendiri.
+    - static biasanya digunakan untuk membuat utility field atau function.
+    - Cara mengakses static class field tidak melalui object, melainkan langsung lewat class.
+    -static class field bersifat global: tidak peduli diakses di mana atau oleh siapa, hasilnya akan tetap sama.   
+    */
+
+    class Configuration{
+        static name = "Belajar OOP JS BASIC";
+        static version = 1.0;                          // --> Kalo pake static, field nya itu punya classya doang bukannya punya instance object (config)
+        static artist = "Ana";
+    }
+    const config = new Configuration();  // intance object = config
+    console.info(config);       // --> gabisa akses
+    console.info(config.name); // --> gabisa akses
+
+    // GINI LEK CARA AKSES STATIC FIELD DARI CLASS CONFIGURATION
+
+    Configuration.artist = "Ananan Nano Nano"; // --> bisa berubah karena fieldnya static(public)
+
+    console.info(Configuration.name);
+    console.info(Configuration.version);
+    console.info(Configuration.artist);
+    console.info(Configuration);
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+</head>
+<body>
+<script>
+/*   Error
+    - Saat membuat aplikasi, kita tidak akan terhindar dari yang namanya error.
+    - Di JavaScript, Error merupakan sesuatu yang sudah standar.
+    - Ada banyak class error di JavaScript, namun semuanya bermuara pada class Error. Artinya, class Error adalah superclass untuk semua jenis error di JavaScript.
+    - Contoh class error di JavaScript antara lain: SyntaxError, TypeError, EvalError, dan lainnya.
+
+    Throw Error
+    - Membuat instance object dari class Error tidak otomatis menimbulkan error.
+    - Kita perlu memberi tahu program bahwa kita ingin memicu sebuah error, proses ini disebut throw error.
+    - Untuk melempar error, gunakan kata kunci throw diikuti dengan instance object error tersebut.
+    - Jika error terjadi, program akan berhenti, dan detail error bisa dilihat di console pada aplikasi browser.
+
+*/
+    class MathUtil {
+        static sum(...numbers){
+
+            if(numbers.length === 0){
+                throw new Error("Total parameter harus lebih dari 0");
+                
+            }
+            let result = 0;
+            for(const number of numbers) {
+                result += number;
+            }
+            return result;
+        }
+    }
+
+    console.info(MathUtil.sum()); // karena disini error (kode program berhenti disini)
+    console.info("Ana")           // maka code yang dibawahnya tidak akan diesekusi
+
+    const result = MathUtil.sum(1,2,3,4,5);
+    console.info(result);
+
+</script>
+</body>
+</html>
